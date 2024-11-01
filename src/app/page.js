@@ -1,35 +1,44 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import { novelApi } from '@/api';
 import { Card, CardBody, Image, Button, CardFooter, CardHeader, Link } from "@nextui-org/react"
 
+// 添加静态小说数据
+const staticNovels = [
+  {
+    id: 1,
+    title: "The Mystery of the Blue Pearl",
+    author: "Sarah Johnson",
+    description: "A thrilling adventure story about a lost artifact and the race to find it before it falls into the wrong hands.",
+    cover: "https://source.unsplash.com/random/400x600/?book",
+    likes: 156
+  },
+  {
+    id: 2,
+    title: "Echoes of Tomorrow",
+    author: "Michael Chen",
+    description: "A science fiction tale exploring the consequences of time travel and the choices we make.",
+    cover: "https://source.unsplash.com/random/400x600/?novel",
+    likes: 243
+  },
+  {
+    id: 3,
+    title: "The Last Garden",
+    author: "Emily Roberts",
+    description: "A touching story about family, growth, and the healing power of nature.",
+    cover: "https://source.unsplash.com/random/400x600/?story",
+    likes: 189
+  },
+  {
+    id: 4,
+    title: "Midnight Chronicles",
+    author: "David Wilson",
+    description: "Dark fantasy meets mystery in this gripping tale of supernatural detective work.",
+    cover: "https://source.unsplash.com/random/400x600/?fantasy",
+    likes: 321
+  }
+];
+
 export default function Home() {
-  const [novels, setNovels] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNovels = async () => {
-      try {
-        const response = await novelApi.getNovelList({
-          page: 1,
-          limit: 8,
-          sortBy: 'publishDate'
-        });
-        
-        if (response.code === 200) {
-          setNovels(response.data.novels);
-        }
-      } catch (error) {
-        console.error('Failed to fetch novels:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNovels();
-  }, []);
-
   return (
     <div className="flex flex-col gap-8">
       {/* Hero Section */}
@@ -51,7 +60,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold">Popular Stories</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {novels.map((novel) => (
+          {staticNovels.map((novel) => (
             <Card 
               key={novel.id} 
               className="hover:scale-105 transition-transform duration-200"
