@@ -2,13 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDaGknci1DLmxi7dT9w3mWDY-oxiBBM8Xs",
-    authDomain: "exponovel.firebaseapp.com",
-    projectId: "exponovel",
-    storageBucket: "exponovel.appspot.com",
-    messagingSenderId: "68831583586",
-    appId: "1:68831583586:web:ee55040d80bbf49d70e03b",
-    measurementId: "G-F0TJWDPDJ3"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

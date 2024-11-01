@@ -4,6 +4,7 @@ import { NextUIProvider } from '@nextui-org/react'
 import { AuthProvider } from '@/context/AuthContext'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Analytics } from "@vercel/analytics/react"
 import './globals.css'
 
 export default function RootLayout({ children }) {
